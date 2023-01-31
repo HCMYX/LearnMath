@@ -20,5 +20,8 @@ if __name__ == "__main__":
     print("norm({}) = {}".format(vec,vec.norm()))
 
     print("normalize {} is {}".format(vec,vec.normalize()))
-
     print(vec.normalize().norm())
+
+    print("normalize {} is {}".format(vec2,vec2.normalize()))
+
+    print(vec2.normalize().norm())

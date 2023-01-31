@@ -1,5 +1,5 @@
 import math
-
+from ._global import EPSILON
 
 class Vector:
     def __init__(self, lst):
@@ -16,7 +16,9 @@ class Vector:
         return math.sqrt(sum(e**2 for e in self))
 
     def normalize(self):
-         return  1 / self.norm() * Vector(self._values)
+        if self.norm() < EPSILON:
+            raise ZeroDivisionError("Normalize error! norm is zero.")
+        return  Vector(self._values) / self.norm()
 
     def __add__(self, other):
         """向量加法，返回结果向量"""
@@ -35,6 +37,10 @@ class Vector:
     def __rmul__(self, other):
         """向量乘法（左乘） other * self"""
         return self * other
+
+    def __truediv__(self, other):
+        """返回数量除法的结果向量：self/ other"""
+        return (1 / other) * self
 
     def __pos__(self):
         """向量取正"""
